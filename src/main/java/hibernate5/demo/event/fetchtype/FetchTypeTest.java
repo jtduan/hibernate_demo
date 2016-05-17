@@ -66,7 +66,7 @@ public class FetchTypeTest extends TestCase {
 		/**
 		 * 打印该语句之前,hibernate会查询数据库读取懒加载的字段
 		 */
-		System.out.println(user.getBook().getName());
+//		System.out.println(user.getBook().getName());
 		assertEquals(user.getName(),"王明");
 	}
 }

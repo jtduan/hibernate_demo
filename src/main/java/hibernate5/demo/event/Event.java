@@ -40,7 +40,7 @@ import org.hibernate.annotations.GenericGenerator;
  * java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: Event is not mapped [from Event]
  */
 @Entity//( name = "entity_table" )
-@Table( name = "EVENTS" )
+@Table( name = "event" )
 public class Event {
     private Long id;
 

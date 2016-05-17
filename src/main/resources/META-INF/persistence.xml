@@ -14,7 +14,7 @@
             Persistence unit for the JPA tutorial of the Hibernate Getting Started Guide
         </description>
 
-        <class>hibernate5.demo.event.Event</class>
+        <!--<class>hibernate5.demo.event.Event</class>-->
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -24,6 +24,7 @@
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name=" hibernate.ejb.use_class_enhancer" value="true" />
 
 
             <!--<property name="hibernate.physical_naming_strategy" value="hibernate5.demo.event.CustomPhysicalNamingStrategy.CustomPhysicalNamingStrategy" />-->

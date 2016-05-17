@@ -14,6 +14,9 @@ public class Enumerate {
     @Enumerated
     private Gender gender2;
 
+    /**
+     * @Convert 注解同样可以应用于其他类型的转换
+     */
     @Convert(converter = GenderConverter.class)
     private Gender gender3;
 

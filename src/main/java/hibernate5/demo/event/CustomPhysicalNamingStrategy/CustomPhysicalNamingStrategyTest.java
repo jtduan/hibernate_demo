@@ -37,7 +37,7 @@ import java.util.List;
  *
  * @author Steve Ebersole
  */
-public class EntityManagerIllustrationTest extends TestCase {
+public class CustomPhysicalNamingStrategyTest extends TestCase {
 	private EntityManagerFactory entityManagerFactory;
 
 	@Override

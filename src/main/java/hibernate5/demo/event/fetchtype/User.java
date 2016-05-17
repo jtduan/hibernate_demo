@@ -3,6 +3,7 @@ package hibernate5.demo.event.fetchtype;
 import hibernate5.demo.event.enumerated.Gender;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class User implements java.io.Serializable{
@@ -32,7 +33,8 @@ public class User implements java.io.Serializable{
      * ============= mark it! ==============
      */
     @Lob
-    private byte[] bytes;
+    @Basic(fetch = FetchType.LAZY)
+    private UUID uuid;
 
     public User() {
     }
@@ -67,11 +69,19 @@ public class User implements java.io.Serializable{
         this.book = book;
     }
 
-    public byte[] getBytes() {
-        return bytes;
+    public UUID getUuid() {
+        return uuid;
     }
 
-    public void setBytes(byte[] bytes) {
-        this.bytes = bytes;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
