@@ -3,9 +3,10 @@ package hibernate5.demo.event.mapsid;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Book3 {
+public class Book3 implements Serializable{
     @Id
     @GeneratedValue
     private int Id;

@@ -1,12 +1,11 @@
 package hibernate5.demo.event.associations;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "asso_home")
 public class Home {
     @Id
     private String home_id;
@@ -17,6 +16,10 @@ public class Home {
     @OneToMany(mappedBy = "home",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Room> rooms;
 
+
+    @OneToMany(mappedBy = "home", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PersonHome> persons = new ArrayList<>();
+
     public Home() {
     }
 
@@ -24,5 +27,13 @@ public class Home {
         this.home_id = home_id;
         this.home_city = home_city;
         this.home_number = home_number;
+    }
+
+    public List<PersonHome> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<PersonHome> persons) {
+        this.persons = persons;
     }
 }

@@ -15,7 +15,9 @@ public class MapsIdTest extends TestCase{
     public void testBasicUsage() {
         EntityManager entityManager = Factory.entityManager;
         entityManager.getTransaction().begin();
-        User3 user = new User3("王明",new Book3("计算机组成原理"));
+        Book3 book = new Book3("计算机组成原理");
+        User3 user = new User3("王明",book);
+//        entityManager.persist(book);
         entityManager.persist(user);
 
 //        Book3 book = new Book3("C语言");

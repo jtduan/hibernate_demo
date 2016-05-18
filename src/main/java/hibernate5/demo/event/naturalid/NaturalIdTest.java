@@ -27,6 +27,19 @@ public class NaturalIdTest extends TestCase{
         Session session = entityManager.unwrap(Session.class);
         NaturalIdTable naturalid= session.bySimpleNaturalId(NaturalIdTable.class).load("4128270031");
         System.out.println(naturalid.getName());
+        naturalid.setCardId("4128270032");
         entityManager.getTransaction().commit();
+
+        /**
+         * setSynchronizationEnabled( false )能提高性能，但是需要保证同一个session中naturalId一致
+         * 把下面两条语句放在commit()之前将会发生异常
+         */
+        NaturalIdTable naturalid2= session.bySimpleNaturalId(NaturalIdTable.class).setSynchronizationEnabled( false ).load("4128270032");
+        System.out.println(naturalid2.getName());
+
+
+        NaturalIdTable naturalid3= session.bySimpleNaturalId(NaturalIdTable.class).setSynchronizationEnabled( false ).load("4128270032");
+        System.out.println(naturalid3.getName());
+
     }
 }

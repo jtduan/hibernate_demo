@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by hero on 2016/5/17.
  */
 @Entity
-@Table(name = "person")
+@Table(name = "any_person")
 @DiscriminatorValue("PRS")
 public class Person implements CarOwner{
     @Id

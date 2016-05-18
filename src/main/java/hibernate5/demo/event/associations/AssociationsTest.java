@@ -1,8 +1,6 @@
 package hibernate5.demo.event.associations;
 
 import hibernate5.demo.event.Factory;
-import hibernate5.demo.event.any.AnyTable;
-import hibernate5.demo.event.any.Person;
 import junit.framework.TestCase;
 
 import javax.persistence.EntityManager;
@@ -35,6 +33,42 @@ public class AssociationsTest extends TestCase{
 
         entityManager.persist(room);
         entityManager.persist(room2);
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+        entityManager.getTransaction().begin();
+
+        Person p = new Person("4128271993","王明");
+        /**
+         * 此处PersonalCard Id被@MapsId注解，该字段98765会被忽略
+         */
+        PersonalCard card = new PersonalCard("98765",2,true,p);
+        entityManager.persist(card);
+
+        entityManager.flush();
+        entityManager.clear();
+        entityManager.getTransaction().commit();
+
+//
+        entityManager.getTransaction().begin();
+
+        Person p2 = new Person("4128271995","王明");
+        Person p3 = new Person("4128271994","李明");
+        /**
+         * 此处PersonalCard Id被@MapsId注解，该字段98765会被忽略
+         */
+        Home home2 = new Home("123456","平舆","98765");
+        Home home3 = new Home("123455","平舆","98764");
+
+        entityManager.persist(home2);
+        entityManager.persist(home3);
+        entityManager.persist(p2);
+        entityManager.persist(p3);
+
+        p2.addHome(home2).addHome(home3);
+        p3.addHome(home2).addHome(home3);
+        entityManager.flush();
+//        entityManager.clear();
         entityManager.getTransaction().commit();
     }
 }

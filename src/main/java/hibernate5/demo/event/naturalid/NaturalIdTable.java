@@ -1,6 +1,7 @@
 package hibernate5.demo.event.naturalid;
 
 import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.NaturalIdCache;
 
 import javax.persistence.*;
 
@@ -9,12 +10,19 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "natural_id")
+/**
+ * 启用二级缓存时 该注解将会生效
+ */
+//@NaturalIdCache
 public class NaturalIdTable {
     @Id
     @GeneratedValue
     private int Id;
 
-    @NaturalId
+    /**
+     * @NaturalId ( mutable = true ) 指示该字段可否被更改，默认为不可更改的
+     */
+    @NaturalId( mutable = true )
     private String cardId;
 
     private String name;
